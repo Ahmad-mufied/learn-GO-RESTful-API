@@ -16,6 +16,14 @@ type CategoryServiceImplementation struct {
 	Validate           *validator.Validate
 }
 
+func NewCategoryService(categoryRepository repository.CategoryRepository, DB *sql.DB, validate *validator.Validate) CategoryService {
+	return &CategoryServiceImplementation{
+		CategoryRepository: categoryRepository,
+		DB:                 DB,
+		Validate:           validate,
+	}
+}
+
 func (service *CategoryServiceImplementation) Create(ctx context.Context, request web.CategoryCreateRequest) web.CategoryResponse {
 	err := service.Validate.Struct(request)
 	helper.PanicIfError(err)
