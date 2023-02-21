@@ -48,7 +48,7 @@ func notFoundError(writer http.ResponseWriter, request *http.Request, err interf
 
 		webResponse := web.WebResponse{
 			Code:   http.StatusNotFound,
-			Status: "INTERNAL SERVER ERROR",
+			Status: "NOT FOUND",
 			Data:   exception.Error,
 		}
 
